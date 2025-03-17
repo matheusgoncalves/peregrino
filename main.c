@@ -1,7 +1,16 @@
 #include <stdio.h>
 #include "mapa.h"
+#include "inventario.h"
 
 int main() {
+    // Criando o inventário
+    Inventario *inventario = criarInventario();
+
+    adicionarItem(inventario, "Pocao");
+    adicionarItem(inventario, "Cajado");
+
+    listarItens(inventario);
+
     // Criando os locais
     NoMapa *condado = criarNoMapa("Condado", "o ponto de partida da sua aventura.", 0);
     NoMapa *bree = criarNoMapa("Bree", "o vilarejo com a famosa Estalagem do Ponei Saltitante.", 0);
