@@ -4,8 +4,8 @@
 #include "mapa.h"
 
 // Função para criar um novo local no mapa
-No* criarNo(char nome[]) {
-    No *novo = (No*) malloc(sizeof(No));
+NoMapa* criarNoMapa(char nome[]) {
+    NoMapa *novo = (NoMapa*) malloc(sizeof(NoMapa));
 
     strcpy(novo->nome, nome);
     novo->filho_esq = NULL;
@@ -16,7 +16,7 @@ No* criarNo(char nome[]) {
 }
 
 // Função para conectar dois locais na árvore
-void conectarNos(No *pai, No *filho, int lado) {
+void conectarMapas(NoMapa *pai, NoMapa *filho, int lado) {
     if (lado == 1) {
         pai->filho_esq = filho;
     } else if (lado == 2) {
@@ -28,7 +28,7 @@ void conectarNos(No *pai, No *filho, int lado) {
 }
 
 // Função para explorar o mapa
-void explorar(No *local) {
+void explorar(NoMapa *local) {
     if (local == NULL) {
         return;
     }

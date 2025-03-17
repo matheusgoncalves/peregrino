@@ -1,15 +1,15 @@
 #ifndef MAPA_H
 #define MAPA_H
 
-typedef struct No {
+typedef struct NoMapa {
     char nome[50];          
-    struct No *filho_esq;    
-    struct No *filho_dir;    
-    struct No *pai;          
-} No;
+    struct NoMapa *filho_esq;    
+    struct NoMapa *filho_dir;    
+    struct NoMapa *pai;          
+} NoMapa;
 
-No* criarNo(char nome[]);
-void conectarNos(No *pai, No *filho, int lado);
-void explorar(No *local);
+NoMapa* criarNoMapa(char nome[]);
+void conectarMapas(NoMapa *pai, NoMapa *filho, int lado);
+void explorar(NoMapa *local);
 
 #endif

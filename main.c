@@ -3,19 +3,19 @@
 
 int main() {
     // Criando os locais
-    No *condado = criarNo("Condado");
-    No *bree = criarNo("Bree");
-    No *floresta = criarNo("Floresta das Trevas");
-    No *valfenda = criarNo("Valfenda");
-    No *moria = criarNo("Mina de Moria");
-    No *montanha = criarNo("Montanha da Perdicao");
+    NoMapa *condado = criarNo("Condado");
+    NoMapa *bree = criarNo("Bree");
+    NoMapa *floresta = criarNo("Floresta das Trevas");
+    NoMapa *valfenda = criarNo("Valfenda");
+    NoMapa *moria = criarNo("Mina de Moria");
+    NoMapa *montanha = criarNo("Montanha da Perdicao");
 
     // Conectando os locais
-    conectarNos(condado, bree, 1);
-    conectarNos(condado, floresta, 2);
-    conectarNos(bree, valfenda, 1);
-    conectarNos(floresta, moria, 1);
-    conectarNos(moria, montanha, 1);
+    conectarMapas(condado, bree, 1);
+    conectarMapas(condado, floresta, 2);
+    conectarMapas(bree, valfenda, 1);
+    conectarMapas(floresta, moria, 1);
+    conectarMapas(moria, montanha, 1);
 
     // Iniciando a exploração a partir do Condado
     explorar(condado);
