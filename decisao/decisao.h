@@ -11,6 +11,6 @@ typedef struct NoDecisao {
 
 NoDecisao* criarNoDecisao(char descricao[], char opcao1[], char opcao2[]);
 void conectarDecisoes(NoDecisao *no, NoDecisao *filho, int opcao);
-void executarDecisao(NoDecisao *no);
+int executarDecisao(NoDecisao *no);
 
 #endif

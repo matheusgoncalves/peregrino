@@ -27,25 +27,33 @@ void conectarDecisoes(NoDecisao *no, NoDecisao *filho, int opcao) {
     }
 }
 
-void executarDecisao(NoDecisao *no) {
+int executarDecisao(NoDecisao *no) {
     if (no == NULL) {
         printf("\nFim das decisoes!\n");
-        return;
+        return 0;
     } else {
         int escolha;
-        printf("\n%s\n", no->descricao);
-        printf("1 - %s\n", no->opcao1);
-        printf("2 - %s\n", no->opcao2);
-        printf("O que voce decide fazer? ");
+        printf("%s\n", no->descricao);
+        printf("[1] - %s\n", no->opcao1);
+        printf("[2] - %s\n", no->opcao2);
+        printf("\nEscolha uma opcao: ");
         scanf("%d", &escolha);
 
         if (escolha == 1) {
-            executarDecisao(no->opcao1No);
+            if (no->opcao1No != NULL) {
+                return executarDecisao(no->opcao1No);
+            }
+
+            return 1;
         } else if (escolha == 2) {
-            executarDecisao(no->opcao2No);
+            if (no->opcao1No != NULL) {
+                return executarDecisao(no->opcao2No);
+            }
+
+            return 2;
         } else {
-            printf("Escolha invalida! Tente novamente.\n");
-            executarDecisao(no);
+            printf("\nEscolha invalida! Tente novamente.\n\n");
+            return executarDecisao(no);
         }
     }
 }

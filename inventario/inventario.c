@@ -88,9 +88,10 @@ void listarItens(Inventario* inv) {
 
     Item* atual = inv->primeiro;
 
-    printf("Itens no inventario:\n\n");
+    printf("\nItens no inventario:\n");
     while (atual != NULL) {
         printf("- %s\n", atual->nome);
         atual = atual->proximo;
     }
+    printf("\n");
 }

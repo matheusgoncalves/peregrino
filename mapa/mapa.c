@@ -33,16 +33,17 @@ NoMapa* explorar(NoMapa *local) {
     }
 
     if (local->filho_esq || local->filho_dir) {
-        printf("Para onde deseja ir?\n");
+        printf("\nPara onde deseja ir?\n");
 
         if (local->filho_esq) {
-            printf("1 - %s\n", local->filho_esq->nome);
+            printf("[1] - %s\n", local->filho_esq->nome);
         }
 
         if (local->filho_dir) {
-            printf("2 - %s\n", local->filho_dir->nome);
+            printf("[2] - %s\n", local->filho_dir->nome);
         }
-
+        
+        printf("\nEscolha uma opcao: ");
         int escolha;
         scanf("%d", &escolha);
 
