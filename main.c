@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "mapa.h"
-#include "inventario.h"
+#include "mapa/mapa.h"
+#include "inventario/inventario.h"
+#include "decisao/decisao.h"
 
 int main() {
     // Criando o inventário
