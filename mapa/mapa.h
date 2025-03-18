@@ -10,6 +10,6 @@ typedef struct NoMapa {
 
 NoMapa* criarNoMapa(char nome[], char descricao[]);
 void conectarMapas(NoMapa *pai, NoMapa *filho, int lado);
-void explorar(NoMapa *local);
+NoMapa* explorar(NoMapa *local);
 
 #endif
