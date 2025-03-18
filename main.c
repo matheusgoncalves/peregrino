@@ -279,6 +279,7 @@ void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario, PilhaJornada *j
     
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
+        while (getchar() != '\n');
     
         switch(opcao) {
             case 1:
@@ -296,7 +297,7 @@ void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario, PilhaJornada *j
                 exibirJornada(jornada);
                 break;
             default:
-                printf("Opcao invalida! Leia com mais atencao.\n");
+                printf("\nOpcao invalida! Leia com mais atencao.\n\n");
                 break;
         }
     }

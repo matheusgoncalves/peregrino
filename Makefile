@@ -6,10 +6,10 @@ INVENTARIO_DIR = inventario
 DECISAO_DIR = decisao
 JORNADA_DIR = jornada
 
-all: jogo # Criação do executável
+all: peregrino # Criação do executável
 
-jogo: main.o mapa.o inventario.o decisao.o jornada.o
-	$(CC) $(CFLAGS) -o jogo main.o mapa.o inventario.o decisao.o jornada.o
+peregrino: main.o mapa.o inventario.o decisao.o jornada.o
+	$(CC) $(CFLAGS) -o peregrino main.o mapa.o inventario.o decisao.o jornada.o
 
 main.o: main.c $(MAPA_DIR)/mapa.h $(INVENTARIO_DIR)/inventario.h $(DECISAO_DIR)/decisao.h $(JORNADA_DIR)/jornada.h # Compilação do main.o
 	$(CC) $(CFLAGS) -c main.c
@@ -27,4 +27,4 @@ jornada.o: $(JORNADA_DIR)/jornada.c $(JORNADA_DIR)/jornada.h $(MAPA_DIR)/mapa.h 
 	$(CC) $(CFLAGS) -c $(JORNADA_DIR)/jornada.c
 
 clean: # Remoção dos arquivos desnecessários
-	rm -rf *.o *~ jogo
+	rm -rf *.o *~ peregrino

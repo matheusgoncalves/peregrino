@@ -38,6 +38,7 @@ int executarDecisao(NoDecisao *no) {
         printf("[2] - %s\n", no->opcao2);
         printf("\nEscolha uma opcao: ");
         scanf("%d", &escolha);
+        while (getchar() != '\n');
 
         if (escolha == 1) {
             if (no->opcao1No != NULL) {
