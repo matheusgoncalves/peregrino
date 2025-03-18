@@ -4,15 +4,14 @@ CFLAGS = -Wall -g # Ativação de avisos e debug
 MAPA_DIR = mapa
 INVENTARIO_DIR = inventario
 DECISAO_DIR = decisao
-FACIL_DIR = historia/facil
-DIFICIL_DIR = historia/dificil
+JORNADA_DIR = jornada
 
 all: jogo # Criação do executável
 
-jogo: main.o mapa.o inventario.o decisao.o
-	$(CC) $(CFLAGS) -o jogo main.o mapa.o inventario.o decisao.o
+jogo: main.o mapa.o inventario.o decisao.o jornada.o
+	$(CC) $(CFLAGS) -o jogo main.o mapa.o inventario.o decisao.o jornada.o
 
-main.o: main.c $(MAPA_DIR)/mapa.h $(INVENTARIO_DIR)/inventario.h $(DECISAO_DIR)/decisao.h # Compilação do main.o
+main.o: main.c $(MAPA_DIR)/mapa.h $(INVENTARIO_DIR)/inventario.h $(DECISAO_DIR)/decisao.h $(JORNADA_DIR)/jornada.h # Compilação do main.o
 	$(CC) $(CFLAGS) -c main.c
 
 mapa.o: $(MAPA_DIR)/mapa.c $(MAPA_DIR)/mapa.h # Compilação do mapa.o
@@ -23,6 +22,9 @@ inventario.o: $(INVENTARIO_DIR)/inventario.c $(INVENTARIO_DIR)/inventario.h # Co
 
 decisao.o: $(DECISAO_DIR)/decisao.c $(DECISAO_DIR)/decisao.h # Compilação do decisao.o
 	$(CC) $(CFLAGS) -c $(DECISAO_DIR)/decisao.c
+
+jornada.o: $(JORNADA_DIR)/jornada.c $(JORNADA_DIR)/jornada.h $(MAPA_DIR)/mapa.h # Compilação do jornada.o
+	$(CC) $(CFLAGS) -c $(JORNADA_DIR)/jornada.c
 
 clean: # Remoção dos arquivos desnecessários
 	rm -rf *.o *~ jogo

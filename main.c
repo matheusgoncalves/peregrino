@@ -4,8 +4,9 @@
 #include "inventario/inventario.h"
 #include "decisao/decisao.h"
 #include <time.h>
+#include "jornada/jornada.h"
 
-void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario);
+void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario, PilhaJornada *jornada);
 int eventoAleatorio();
 
 int main(void) {
@@ -14,6 +15,9 @@ int main(void) {
 
     // Criando o inventário
     Inventario *inventario = criarInventario();
+
+    // Criando a pilha de jornada
+    PilhaJornada *jornada = criarPilha();
 
     // Criando os locais
     NoMapa *bree = criarNoMapa("Bree", "o vilarejo com a famosa Estalagem do Ponei Saltitante.");
@@ -247,27 +251,31 @@ int main(void) {
             }
         }
 
-        gerenciarAcoes(&localAtual, inventario);
+        registrarLocal(jornada, localAtual);
+        gerenciarAcoes(&localAtual, inventario, jornada);
     }
 
     // Chegada na Montanha da Perdição
     printf("\nVoce chega em %s, %s\n", localAtual->nome, localAtual->descricao);
-    printf("Voce joga o Um Anel no fogo. A terra treme, e a missao esta completa!\n\n");
+    printf("Voce joga o Um Anel no fogo. A terra treme, e a jornada esta completa!\n\n");
     removerItem(inventario, "Um Anel");
     printf("Vitoria! O mal foi derrotado.\n");
+
+    // Liberando a memória
+    destruirPilha(jornada);
 
     return 0;
 }
 
 // Função para gerenciar ações
-void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario) {
+void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario, PilhaJornada *jornada) {
     int opcao = 0;
 
     while (opcao != 1) {
         printf("O que deseja fazer?\n");
         printf("[1] - Explorar\n");
         printf("[2] - Ver inventario\n");
-        printf("[3] - Ver informacoes obtidas\n\n");
+        printf("[3] - Ver jornada percorrida\n\n");
     
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -285,7 +293,7 @@ void gerenciarAcoes(NoMapa **localAtual, Inventario *inventario) {
                 listarItens(inventario);
                 break;
             case 3:
-                printf("\nFalta implementar.\n\n");
+                exibirJornada(jornada);
                 break;
             default:
                 printf("Opcao invalida! Leia com mais atencao.\n");
